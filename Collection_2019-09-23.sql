@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: Collection
-# Generation Time: 2019-09-23 13:06:04 +0000
+# Generation Time: 2019-09-23 13:19:53 +0000
 # ************************************************************
 
 
@@ -25,14 +25,14 @@
 
 CREATE TABLE `Collection` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `latin name` varchar(30) NOT NULL DEFAULT '',
-  `common name` varchar(30) DEFAULT NULL,
-  `height (cm)` varchar(10) NOT NULL DEFAULT '',
-  `cap width (cm)` varchar(10) NOT NULL DEFAULT '',
+  `latin_name` varchar(30) NOT NULL DEFAULT '',
+  `common_name` varchar(30) DEFAULT NULL,
+  `height(cm)` int(2) NOT NULL,
+  `cap_width(cm)` int(2) NOT NULL,
   `deadly` char(3) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `latin name` (`latin name`),
-  UNIQUE KEY `common name` (`common name`)
+  UNIQUE KEY `latin name` (`latin_name`),
+  UNIQUE KEY `common name` (`common_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
