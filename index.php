@@ -5,17 +5,17 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 $collection = $db->query('SELECT `latin_name`, `common_name`, `height(cm)`, `cap_width(cm)`, `deadly` FROM `Collection`');
 
-$items = $collection->fetchAll();
-var_dump($items);
+$rows = $collection->fetchAll();
+//var_dump($items);
 
-//foreach($items as $value)
-//{
-//    echo $value['latin_name'];
-//    echo $value['common_name'];
-//    echo $value['height(cm)'];
-//    echo $value['cap_width(cm)'];
-//    echo $value['deadly'];
-//}
+foreach($rows as $field)
+{
+    echo $field['latin_name'].'<br>';
+    echo $field['common_name'].'<br>';
+    echo $field['height(cm)'].'<br>';
+    echo $field['cap_width(cm)'].'<br>';
+    echo $field['deadly'].'<br><br>';
+}
 ?>
 
 <!--<!DOCTYPE html>-->
