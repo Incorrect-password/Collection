@@ -7,11 +7,7 @@ $collection = $db->query('SELECT `latin_name`,`common_name`,`height(cm)`,`cap_wi
 
 $items = $collection->fetchAll();
 
-foreach($items as $value)
-{
-    echo $value['latin_name'];
-}
-
+var_dump($items);
 ?>
 
 <!--<!DOCTYPE html>-->
