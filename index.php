@@ -1,13 +1,9 @@
 <?php
-$db = new PDO('mysql:host=db;dbname=Collection','root','password');
+require('functions.php');
+displayData();
 
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-$collection = $db->query('SELECT `latin_name`,`common_name`,`height(cm)`,`cap_width(cm)`,`deadly` FROM `Collection`');
 
-$items = $collection->fetchAll();
-
-var_dump($items);
 ?>
 
 <!--<!DOCTYPE html>-->
