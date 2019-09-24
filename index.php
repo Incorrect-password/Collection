@@ -1,23 +1,9 @@
 <?php
-$db = new PDO('mysql:host=db; dbname=Collection','root','password');
-
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-$collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?` FROM `Collection`');
-
-$allItems = $collection->fetchAll();
-//var_dump($items);
+require('functions.php');
+displayData();
 
 
 
-foreach($allItems as $row)
-{
-    foreach($row as $row => $field)
-    {
-        echo $row . ' : ' . $field . '<br>';
-    }
-    echo '<br>';
-}
 ?>
 
 <!--<!DOCTYPE html>-->
