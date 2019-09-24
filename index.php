@@ -1,6 +1,8 @@
 <?php
 require('functions.php');
-displayData();
+$db = databaseConnection();
+$allItems = retrieveData($db);
+displayData($allItems);
 
 
 
