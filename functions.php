@@ -18,7 +18,7 @@ function collectionDbConnection(): object
  */
 function retrieveData(object $db): array
 {
-    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?` FROM `Collection`');
+    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection`');
 
     $allItems = $collection->fetchAll();
     return $allItems;
@@ -41,14 +41,14 @@ function displayData(array $allItems): string
     return $output;
 }
 
-function newItem()
+function newItem($latin, $common, $height, $width, $death)
 {
-    $db = collectionDbConnection($latin, $common, $height, $width, $death);
-    $query = $db->prepare('INPUT INTO `Collection` (`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?`) VALUES (:latinname, :commonname, :height, :cap-width, ;deadly)');
+    $db = collectionDbConnection();
+    $query = $db->prepare('INSERT INTO `Collection` (`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly`) VALUES (:latinname, :commonname, :height, :capwidth, :deadly);');
 
     $query->execute(['latinname' => $latin,
         'commonname' => $common,
         'height' => $height,
-        'cap-width' => $width,
+        'capwidth' => $width,
         'deadly' => $death]);
 }
