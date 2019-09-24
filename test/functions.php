@@ -6,16 +6,11 @@ require('../functions.php');
 
 class functions extends TestCase
 {
-    public function testCollectionDbConnection()
-    {
 
-    }
-    public function testRetrieveData()
-    {
-
-    }
     public function testDisplayData()
     {
-
+        $cars = [['make'=>"vw"],['make'=>'bmw']];
+        $result = displayData($cars);
+        $this->assertTrue(is_string($result));
     }
 }
