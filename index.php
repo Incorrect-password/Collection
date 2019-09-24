@@ -3,18 +3,20 @@ $db = new PDO('mysql:host=db; dbname=Collection','root','password');
 
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-$collection = $db->query('SELECT `latin_name`, `common_name`, `height(cm)`, `cap_width(cm)`, `deadly` FROM `Collection`');
+$collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?` FROM `Collection`');
 
-$rows = $collection->fetchAll();
+$allItems = $collection->fetchAll();
 //var_dump($items);
 
-foreach($rows as $field)
+
+
+foreach($allItems as $row)
 {
-    echo $field['latin_name'].'<br>';
-    echo $field['common_name'].'<br>';
-    echo $field['height(cm)'].'<br>';
-    echo $field['cap_width(cm)'].'<br>';
-    echo $field['deadly'].'<br><br>';
+    foreach($row as $row => $field)
+    {
+        echo $row . ' : ' . $field . '<br>';
+    }
+    echo '<br>';
 }
 ?>
 
