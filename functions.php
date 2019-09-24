@@ -2,7 +2,7 @@
 /**
  * sets up a connection to the collection database
  *
- * @return object $db containing the database info
+ * @return :PDO $db containing the database info
  */
 function collectionDbConnection(): object
 {

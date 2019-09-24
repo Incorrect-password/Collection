@@ -4,7 +4,7 @@ use PHPUNit\Framework\TestCase;
 
 require('../functions.php');
 
-class functions extends TestCase
+class functionsTest extends TestCase
 {
 
     public function testDisplayData()
