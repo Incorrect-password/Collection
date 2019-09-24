@@ -1,5 +1,14 @@
 <?php
 require('functions.php');
+if(isset($_POST['latin-name']) &&
+    isset($_POST['common-name']) &&
+    isset($_POST['height']) &&
+    isset($_POST['cap-width']) &&
+    isset($_POST['deadly']))
+{
+    newItem($_POST['latin-name'], $_POST['common-name'], $_POST['height'], $_POST['cap-width'], $_POST['deadly']);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +20,13 @@ require('functions.php');
     </head>
     <body>
         <form method="post">
-            Latin Name<input type="text" name="latin name">
-            Common Name<input type="text" name="common name">
+            Latin Name<input type="text" name="latin-name">
+            Common Name<input type="text" name="common-name">
             Height(cm)<input type="text" name="height">
-            Cap Width(cm)<input type="text" name="cap width">
+            Cap Width(cm)<input type="text" name="cap-width">
             Deadly?<input type="text" name="deadly">
             <input type="submit" value="submit" name="submit">
+            <a href="index.php">See Collection</a>
         </form>
     </body>
 </html>
