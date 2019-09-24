@@ -1,22 +1,22 @@
 <?php
 
-function retrieveData ()
+function displayData ()
 {
-    $db = new PDO('mysql:host=db;dbname=Collection','root','password');
+    $db = new PDO('mysql:host=db; dbname=Collection','root','password');
 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-    $collection = $db->query('SELECT `latin_name`,`common_name`,`height(cm)`,`cap_width(cm)`,`deadly` FROM `Collection`');
+    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?` FROM `Collection`');
 
-    $items = $collection->fetchAll();
+    $allItems = $collection->fetchAll();
 
-    return $items;
-    echo 'yes';
-}
-function displayData($items)
-{
-    foreach($items as $value)
+    foreach($allItems as $row)
     {
-        echo $value['latin_name'];
+        echo '<div>';
+        foreach($row as $row => $field)
+        {
+            echo '<p>' . $row . ' : ' . $field . '</p>';
+        }
+        echo '</div>';
     }
 }
