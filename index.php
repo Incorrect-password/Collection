@@ -1,8 +1,9 @@
 <?php
 require('functions.php');
-$db = databaseConnection();
+$db = collectionDbConnection();
 $allItems = retrieveData($db);
-displayData($allItems);
+$output = displayData($allItems);
+echo $output;
 
 
 
