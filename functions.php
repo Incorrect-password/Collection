@@ -40,3 +40,12 @@ function displayData(array $allItems): string
     }
     return $output;
 }
+
+function newItem(string $_POST['latin name'], string $_POST['common name'],int $_POST['height'], int $_POST['width'], string $_POST['deadly'])
+{
+    $db = collectionDbConnection();
+    $query = $db->prepare('INPUT INTO `Collection` (`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?`) VALUES (:latinname, :commonname, :height, :capwidth, ;deadly)');
+
+    $query->execute(['latinname' => $_POST['latin name'], 'commonname' => $_POST['common name'],'height' => $_POST['height'], 'width' => $_POST['width'], 'deadly' => $_POST['deadly']]);
+
+}
