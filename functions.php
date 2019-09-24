@@ -2,9 +2,9 @@
 /**
  * sets up a connection to the collection database
  *
- * @return array variable containing the database info
+ * @return object object containing the database info
  */
-function collectionDbConnection()
+function collectionDbConnection(): object
 {
     $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
 
@@ -16,7 +16,7 @@ function collectionDbConnection()
  * @param $db - all the data from the database
  * @return array an array containing all of the data from the specified fields.
  */
-function retrieveData($db)
+function retrieveData(object $db): array
 {
     $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly?` FROM `Collection`');
 
@@ -28,7 +28,7 @@ function retrieveData($db)
  * @param $allItems the chosen data selected from a database
  * @return string concatenated fields and values.
  */
-function displayData($allItems)
+function displayData(array $allItems): string
 {
     $output = '';
     foreach($allItems as $row)
