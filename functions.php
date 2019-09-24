@@ -2,7 +2,7 @@
 /**
  * sets up a connection to the collection database
  *
- * @return object object containing the database info
+ * @return object $db containing the database info
  */
 function collectionDbConnection(): object
 {
@@ -14,7 +14,7 @@ function collectionDbConnection(): object
 
 /**
  * @param $db - all the data from the database
- * @return array an array containing all of the data from the specified fields.
+ * @return array $allItems containing all of the data from the specified fields.
  */
 function retrieveData(object $db): array
 {
@@ -26,7 +26,7 @@ function retrieveData(object $db): array
 
 /**
  * @param $allItems the chosen data selected from a database
- * @return string concatenated fields and values.
+ * @return string $output concatenated fields and values.
  */
 function displayData(array $allItems): string
 {
