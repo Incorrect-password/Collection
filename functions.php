@@ -18,7 +18,7 @@ function collectionDbConnection(): PDO
  */
 function retrieveData(PDO $db): array
 {
-    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection`');
+    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
 
     $allItems = $collection->fetchAll();
     return $allItems;
@@ -38,6 +38,7 @@ function displayData(array $allItems): string
         {
            $output .= '<p>' . '<span class="field">' . $field . '</span>' .  ' : ' . '<span class="value">' . $value . '</span>' . '</p>';
         }
+        $output .= '<p>'. '<input type="submit" value="Delete" name="delete">' .'</p>';
         $output .= '</div>';
     }
     return $output;
@@ -59,4 +60,11 @@ function newItem(PDO $db, string $latin, string $common, int $height, int $width
         'height' => $height,
         'capwidth' => $width,
         'deadly' => $death]);
+}
+
+function delete($delete)
+{
+    $query = $db->prepare('INSERT INTO `Collection` (`Deleted`) VALUES (:delete)');
+
+    $query->execute(['delete' => $delete]);
 }
