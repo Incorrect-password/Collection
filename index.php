@@ -15,7 +15,7 @@ echo $output;
      <title>My Mushroom Collection</title>
     </head>
     <body>
-        <a href="new item.php">Add a new item.</a>
+        <a href="new-item.php">Add a new item.</a>
     </body>
 </html>
 

@@ -6,7 +6,8 @@ if(isset($_POST['latin-name']) &&
     isset($_POST['cap-width']) &&
     isset($_POST['deadly']))
 {
-    newItem($_POST['latin-name'], $_POST['common-name'], $_POST['height'], $_POST['cap-width'], $_POST['deadly']);
+    $db = collectionDbConnection();
+    newItem($db, $_POST['latin-name'], $_POST['common-name'], $_POST['height'], $_POST['cap-width'], $_POST['deadly']);
 }
 
 ?>
@@ -26,7 +27,7 @@ if(isset($_POST['latin-name']) &&
             Cap Width(cm)<input type="text" name="cap-width">
             Deadly?<input type="text" name="deadly">
             <input type="submit" value="submit" name="submit">
-            <a href="index.php">See Collection</a>
         </form>
+        <a href="index.php">See Collection</a>
     </body>
 </html>
