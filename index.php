@@ -17,13 +17,13 @@ $output = displayData($allItems);
     <body>
         <div class="background">
             <h1>A Collection of Mushrooms</h1>
-            <div class="displayUnit">
-                <?php echo $output; ?>
-            </div>
-
-
         </div>
-        <a class="pagelink" href="new-item.php">Add a new item.</a>
+        <div class="anchorBox">
+            <a class="pagelink" href="new-item.php">Add a new item.</a>
+        </div>
+        <div class="displayUnit">
+            <?php echo $output; ?>
+        </div>
     </body>
 </html>
 
