@@ -4,7 +4,7 @@ use PHPUNit\Framework\TestCase;
 
 require('../functions.php');
 
-class functions extends TestCase
+class functionsTest extends TestCase
 {
 
     public function testDisplayData()
@@ -12,5 +12,6 @@ class functions extends TestCase
         $cars = [['make'=>"vw"],['make'=>'bmw']];
         $result = displayData($cars);
         $this->assertTrue(is_string($result));
+        $this->assertEquals("<p>make : vw</p><p>make : bmw</p>", $result);
     }
 }

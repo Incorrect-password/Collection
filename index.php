@@ -5,6 +5,7 @@ $allItems = retrieveData($db);
 $output = displayData($allItems);
 echo $output;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,3 +18,5 @@ echo $output;
         <a href="new item.php">Add a new item.</a>
     </body>
 </html>
+
+
