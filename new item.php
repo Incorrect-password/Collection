@@ -21,11 +21,16 @@ if(isset($_POST['latin-name']) &&
     </head>
     <body>
         <form method="post">
-            Latin Name<input type="text" name="latin-name">
-            Common Name<input type="text" name="common-name">
-            Height(cm)<input type="text" name="height">
-            Cap Width(cm)<input type="text" name="cap-width">
-            Deadly?<input type="text" name="deadly">
+            <label for="latin-name">Latin Name</label>
+            <input type="text" name="latin-name" id = "latin-name">
+            <label for="common-name">Common Name</label>
+            <input type="text" name="common-name" id="common-name">
+            <label for="height">Height</label>
+            <input type="text" name="height" id="height">
+            <label for="cap-width">Cap Width(cm)</label>
+            <input type="text" name="cap-width" id="cap-width">
+            <label for="deadly">Deadly?</label>
+            <input type="text" name="deadly" id="deadly">
             <input type="submit" value="submit" name="submit">
         </form>
         <a href="index.php">See Collection</a>
