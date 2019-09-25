@@ -33,10 +33,12 @@ function displayData(array $allItems): string
     $output = '';
     foreach($allItems as $row)
     {
-        foreach($row as $row => $field)
+        $output .= '<div class="item">';
+        foreach($row as $field => $value)
         {
-           $output .= '<p>' . $row . ' : ' . $field . '</p>';
+           $output .= '<p>' . '<span class="field">' . $field . '</span>' .  ' : ' . '<span class="value">' . $value . '</span>' . '</p>';
         }
+        $output .= '</div>';
     }
     return $output;
 }
