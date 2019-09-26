@@ -55,11 +55,12 @@ function displayData(array $allItems): string
  * @param int $width user input for the width of a new item
  * @param string $death user input for the deathly cat. of a new item
  */
-function newItem(PDO $db, string $latin, string $common, int $height, int $width, string $death)
+function newItem(PDO $db, string $image, string $latin, string $common, int $height, int $width, string $death)
 {
-    $query = $db->prepare('INSERT INTO `Collection` (`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly`) VALUES (:latinname, :commonname, :height, :capwidth, :deadly);');
+    $query = $db->prepare('INSERT INTO `Collection` (`image`,`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly`) VALUES (:image, :latinname, :commonname, :height, :capwidth, :deadly);');
 
-    $query->execute(['latinname' => $latin,
+    $query->execute(['image' => $image,
+        'latinname' => $latin,
         'commonname' => $common,
         'height' => $height,
         'capwidth' => $width,
