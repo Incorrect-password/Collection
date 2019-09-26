@@ -79,3 +79,9 @@ input{
     border-radius: 5px;
     text-align: center;
 }
+.image {
+    width: 100%;
+}
+img {
+    width: 100%;
+}
