@@ -38,7 +38,7 @@ if(isset($_POST['image']) &&
             </div>
             <div class="inputDiv">
                 <label for="height">Height(cm): </label>
-                <input type="number" name="height" id="height" placeholder="eg. 10" required>
+                <input type="number" name="height" id="height" placeholder="eg. 10" min="1" max="99" maxlength="2" size="2" required>
             </div>
             <div class="inputDiv">
                 <label for="cap-width">Cap Width(cm): </label>
