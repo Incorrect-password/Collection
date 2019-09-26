@@ -17,40 +17,29 @@ if(isset($_POST['latin-name']) &&
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="normalize.css" rel="stylesheet" type="text/css">
-        <link href="mushroomcollection.css" rel="stylesheet" type="text/css">
      <title>Add Item</title>
     </head>
     <body>
-        <h1>Add A New Shroom</h1>
         <form method="post">
-            <div class="inputDiv">
-                <label for="latin-name">Latin Name: </label>
-                <input type="text" name="latin-name" id="latin-name" placeholder="eg. Boletus edulis" required>
-            </div>
-            <div class="inputDiv">
-                <label for="common-name">Common Name: </label>
-                <input type="text" name="common-name" id="common-name" placeholder="eg. Porcini" required>
-            </div>
-            <div class="inputDiv">
-                <label for="height">Height(cm): </label>
-                <input type="number" name="height" id="height" placeholder="eg. 10" required>
-            </div>
-            <div class="inputDiv">
-                <label for="cap-width">Cap Width(cm): </label>
-                <input type="number" min="1" max="99" maxlength="2" size="2" name="cap-width" id="cap-width" placeholder="eg. 10" required>
-            </div>
-            <div class="inputDiv">
-                <label for="deadly yes">Deadly? Yes</label>
-                <input type="radio" name="deadly" id="deadly yes" value="Yes">
-                <label for="deadly no">No</label>
-                <input type="radio" name="deadly" id="deadly no" value="No" checked>
-            </div>
-            <div class="inputDiv">
-                <input type="submit" value="submit" name="submit">
-            </div>
+            <label for="latin-name">Latin Name</label>
+            <input type="text" name="latin-name" id = "latin-name" placeholder="eg. Boletus edulis " required>
+
+            <label for="common-name">Common Name</label>
+            <input type="text" name="common-name" id="common-name" placeholder="eg. Porcini" required>
+
+            <label for="height">Height</label>
+            <input type="number" name="height" id="height" placeholder="eg. 10" required>
+
+            <label for="cap-width">Cap Width(cm)</label>
+            <input type="number" min="1" max="99" maxlength="2" size="2" name="cap-width" id="cap-width" placeholder="eg. 10" required>
+
+            <label for="deadly yes">Deadly? Yes</label>
+            <input type="radio" name="deadly" id="deadly yes" value="Yes">
+            <label for="deadly no">No</label>
+            <input type="radio" name="deadly" id="deadly" value="No" checked>
+
+            <input type="submit" value="submit" name="submit">
         </form>
-        <div class="anchorBox">
-            <a href="index.php" class="pagelink">Back to Collection</a>
-        </div>
+        <a href="index.php">See Collection</a>
     </body>
 </html>
