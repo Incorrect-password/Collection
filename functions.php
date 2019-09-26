@@ -13,7 +13,7 @@ function collectionDbConnection(): PDO
 }
 
 /**
- * @param $db - all the data from the database
+ * @param $db all the data from the database
  * @return array $allItems containing all of the data from the specified fields.
  */
 function retrieveData(PDO $db): array
@@ -65,6 +65,10 @@ function newItem(PDO $db, string $latin, string $common, int $height, int $width
         'deadly' => $death]);
 }
 
+/**
+ * @param $db all the data from the database
+ * @param $id the id number from the delete form
+ */
 function delete($db, $id)
 {
    $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
