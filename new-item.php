@@ -43,7 +43,7 @@ if(isset($_POST['latin-name']) &&
                 <label for="deadly yes">Deadly? Yes</label>
                 <input type="radio" name="deadly" id="deadly yes" value="Yes">
                 <label for="deadly no">No</label>
-                <input type="radio" name="deadly" id="deadly" value="No" checked>
+                <input type="radio" name="deadly" id="deadly no" value="No" checked>
             </div>
             <div class="inputDiv">
                 <input type="submit" value="submit" name="submit">

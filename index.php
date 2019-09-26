@@ -3,6 +3,11 @@ require('functions.php');
 $db = collectionDbConnection();
 $allItems = retrieveData($db);
 $output = displayData($allItems);
+if(isset($_POST['id']))
+{
+    delete($db, $_POST['id']);
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>

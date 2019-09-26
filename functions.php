@@ -18,7 +18,7 @@ function collectionDbConnection(): PDO
  */
 function retrieveData(PDO $db): array
 {
-    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
+    $collection = $db->query('SELECT `id`, `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
 
     $allItems = $collection->fetchAll();
     return $allItems;
@@ -33,13 +33,16 @@ function displayData(array $allItems): string
     $output = '';
     foreach($allItems as $row)
     {
-        $output .= '<div class="item">';
+        $output .= '<div class="item"><form method="post">';
         foreach($row as $field => $value)
-        {
-           $output .= '<p>' . '<span class="field">' . $field . '</span>' .  ' : ' . '<span class="value">' . $value . '</span>' . '</p>';
-        }
-        $output .= '<p>'. '<input type="submit" value="Delete" name="delete">' .'</p>';
-        $output .= '</div>';
+            if($field == 'id')
+            {
+              $output .= '<input type="hidden" name="id" value="' . $value . '"">';
+            }else{
+               $output .= '<p>' . '<span class="field">' . $field .  ' : ' . '</span>' . '<span class="value">' . $value . '</span>' . '</p>';
+            }
+            $output .= '<p>'. '<input type="submit" value="Delete" name="submit">' .'</p>';
+            $output .= '</form></div>';
     }
     return $output;
 }
@@ -62,9 +65,12 @@ function newItem(PDO $db, string $latin, string $common, int $height, int $width
         'deadly' => $death]);
 }
 
-function delete($delete)
+function delete($db, $id)
 {
-    $query = $db->prepare('INSERT INTO `Collection` (`Deleted`) VALUES (:delete)');
+   $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
 
-    $query->execute(['delete' => $delete]);
+   $query->execute([':id' => $id]);
+
+
+
 }
