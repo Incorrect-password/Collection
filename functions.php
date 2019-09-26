@@ -4,7 +4,7 @@
  *
  * @return :PDO $db containing the database info
  */
-function collectionDbConnection(): object
+function collectionDbConnection(): PDO
 {
     $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
 
@@ -13,12 +13,12 @@ function collectionDbConnection(): object
 }
 
 /**
- * @param $db - all the data from the database
+ * @param $db all the data from the database
  * @return array $allItems containing all of the data from the specified fields.
  */
-function retrieveData(object $db): array
+function retrieveData(PDO $db): array
 {
-    $collection = $db->query('SELECT `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection`');
+    $collection = $db->query('SELECT `id`, `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
 
     $allItems = $collection->fetchAll();
     return $allItems;
@@ -33,10 +33,16 @@ function displayData(array $allItems): string
     $output = '';
     foreach($allItems as $row)
     {
-        foreach($row as $row => $field)
-        {
-           $output .= '<p>' . $row . ' : ' . $field . '</p>';
-        }
+        $output .= '<div class="item"><form method="post">';
+        foreach($row as $field => $value)
+            if($field == 'id')
+            {
+              $output .= '<input type="hidden" name="id" value="' . $value . '"">';
+            }else{
+               $output .= '<p>' . '<span class="field">' . $field .  ' : ' . '</span>' . '<span class="value">' . $value . '</span>' . '</p>';
+            }
+            $output .= '<p>'. '<input type="submit" value="Delete" name="submit">' .'</p>';
+            $output .= '</form></div>';
     }
     return $output;
 }
@@ -57,4 +63,18 @@ function newItem(PDO $db, string $latin, string $common, int $height, int $width
         'height' => $height,
         'capwidth' => $width,
         'deadly' => $death]);
+}
+
+/**
+ * @param $db all the data from the database
+ * @param $id the id number from the delete form
+ */
+function delete($db, $id)
+{
+   $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
+
+   $query->execute([':id' => $id]);
+
+
+
 }
