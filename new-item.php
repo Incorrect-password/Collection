@@ -1,13 +1,14 @@
 <?php
 require('functions.php');
-if(isset($_POST['latin-name']) &&
+if(isset($_POST['image']) &&
+    isset($_POST['latin-name']) &&
     isset($_POST['common-name']) &&
     isset($_POST['height']) &&
     isset($_POST['cap-width']) &&
     isset($_POST['deadly']))
 {
     $db = collectionDbConnection();
-    newItem($db, $_POST['latin-name'], $_POST['common-name'], $_POST['height'], $_POST['cap-width'], $_POST['deadly']);
+    newItem($db, $_POST['image'], $_POST['latin-name'], $_POST['common-name'], $_POST['height'], $_POST['cap-width'], $_POST['deadly']);
 }
 
 ?>
@@ -23,6 +24,10 @@ if(isset($_POST['latin-name']) &&
     <body>
         <h1>Add A New Shroom</h1>
         <form method="post">
+            <div class="inputDiv">
+                <label for="image">Image URL/Location</label>
+                <input type="text" name="image" id="image" placeholder="eg. /pics/Boletus">
+            </div>
             <div class="inputDiv">
                 <label for="latin-name">Latin Name: </label>
                 <input type="text" name="latin-name" id="latin-name" placeholder="eg. Boletus edulis" required>

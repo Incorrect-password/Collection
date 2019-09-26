@@ -18,7 +18,7 @@ function collectionDbConnection(): PDO
  */
 function retrieveData(PDO $db): array
 {
-    $collection = $db->query('SELECT `id`, `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
+    $collection = $db->query('SELECT `id`, `image`, `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
 
     $allItems = $collection->fetchAll();
     return $allItems;
@@ -35,9 +35,10 @@ function displayData(array $allItems): string
     {
         $output .= '<div class="item"><form method="post">';
         foreach($row as $field => $value)
-            if($field == 'id')
-            {
-              $output .= '<input type="hidden" name="id" value="' . $value . '"">';
+            if($field == 'id') {
+                $output .= '<input type="hidden" name="id" value="' . $value . '">';
+            } else if($field == 'image'){
+                $output .= '<div class="image"><img src="' . $value . '" alt="picture of mushroom"></div>';
             }else{
                $output .= '<p>' . '<span class="field">' . $field .  ' : ' . '</span>' . '<span class="value">' . $value . '</span>' . '</p>';
             }
@@ -54,11 +55,12 @@ function displayData(array $allItems): string
  * @param int $width user input for the width of a new item
  * @param string $death user input for the deathly cat. of a new item
  */
-function newItem(PDO $db, string $latin, string $common, int $height, int $width, string $death)
+function newItem(PDO $db, string $image, string $latin, string $common, int $height, int $width, string $death)
 {
-    $query = $db->prepare('INSERT INTO `Collection` (`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly`) VALUES (:latinname, :commonname, :height, :capwidth, :deadly);');
+    $query = $db->prepare('INSERT INTO `Collection` (`image`,`Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly`) VALUES (:image, :latinname, :commonname, :height, :capwidth, :deadly);');
 
-    $query->execute(['latinname' => $latin,
+    $query->execute(['image' => $image,
+        'latinname' => $latin,
         'commonname' => $common,
         'height' => $height,
         'capwidth' => $width,
@@ -69,7 +71,7 @@ function newItem(PDO $db, string $latin, string $common, int $height, int $width
  * @param $db all the data from the database
  * @param $id the id number from the delete form
  */
-function delete($db, $id)
+function delete(PDO $db, $id)
 {
    $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
 
