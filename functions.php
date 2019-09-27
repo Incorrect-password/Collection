@@ -4,7 +4,7 @@
  *
  * @return :PDO $db containing the database info
  */
-function collectionDbConnection(): object
+function collectionDbConnection(): PDO
 {
     $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
 
@@ -13,10 +13,10 @@ function collectionDbConnection(): object
 }
 
 /**
- * @param $db - all the data from the database
+ * @param $db all the data from the database
  * @return array $allItems containing all of the data from the specified fields.
  */
-function retrieveData(object $db): array
+function retrieveData(PDO $db): array
 {
     $collection = $db->query('SELECT `id`, `image`, `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
 
@@ -40,10 +40,10 @@ function displayData(array $allItems): string
             } else if($field == 'image'){
                 $output .= '<div class="image"><img src="' . $value . '" alt="picture of mushroom"></div>';
             }else{
-               $output .= '<p>' . '<span class="field">' . $field .  ' : ' . '</span>' . '<span class="value">' . $value . '</span>' . '</p>';
+                $output .= '<p>' . '<span class="field">' . $field .  ' : ' . '</span>' . '<span class="value">' . $value . '</span>' . '</p>';
             }
-            $output .= '<p>'. '<input type="submit" value="Delete" name="submit">' .'</p>';
-            $output .= '</form></div>';
+        $output .= '<p>'. '<input type="submit" value="Delete" name="submit">' .'</p>';
+        $output .= '</form></div>';
     }
     return $output;
 }
@@ -73,7 +73,8 @@ function newItem(PDO $db, string $image, string $latin, string $common, int $hei
  */
 function delete(PDO $db, $id)
 {
-   $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
+    $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
 
-   $query->execute([':id' => $id]);
+    $query->execute([':id' => $id]);
+
 }

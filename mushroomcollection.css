@@ -4,7 +4,6 @@
 html {
     font-size: 62.5%;
     background-image: url("pics/pexels-photo-259660.jpeg");
-    background-size: contain;
     background-repeat: repeat;
 }
 .background {
