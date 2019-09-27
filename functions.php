@@ -33,7 +33,6 @@ function displayData(array $allItems): string
     $output = '';
     foreach($allItems as $row)
     {
-<<<<<<< HEAD
         $output .= '<div class="item"><form method="post">';
         foreach($row as $field => $value)
             if($field == 'id') {
@@ -45,12 +44,6 @@ function displayData(array $allItems): string
             }
             $output .= '<p>'. '<input type="submit" value="Delete" name="submit">' .'</p>';
             $output .= '</form></div>';
-=======
-        foreach($row as $row => $field)
-        {
-           $output .= '<p>' . $row . ' : ' . $field . '</p>';
-        }
->>>>>>> 5e725a0259b87d515b34cce36bbdd0ff6c4c3bfd
     }
     return $output;
 }
@@ -73,7 +66,6 @@ function newItem(PDO $db, string $image, string $latin, string $common, int $hei
         'capwidth' => $width,
         'deadly' => $death]);
 }
-<<<<<<< HEAD
 
 /**
  * @param $db all the data from the database
@@ -84,9 +76,4 @@ function delete(PDO $db, $id)
    $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
 
    $query->execute([':id' => $id]);
-
-
-
 }
-=======
->>>>>>> 5e725a0259b87d515b34cce36bbdd0ff6c4c3bfd
