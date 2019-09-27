@@ -4,7 +4,7 @@
  *
  * @return :PDO $db containing the database info
  */
-function collectionDbConnection(): PDO
+function collectionDbConnection(): object
 {
     $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
 
@@ -13,10 +13,10 @@ function collectionDbConnection(): PDO
 }
 
 /**
- * @param $db all the data from the database
+ * @param $db - all the data from the database
  * @return array $allItems containing all of the data from the specified fields.
  */
-function retrieveData(PDO $db): array
+function retrieveData(object $db): array
 {
     $collection = $db->query('SELECT `id`, `image`, `Latin Name`, `Common Name`, `Height(cm)`, `Cap Width(cm)`, `Deadly` FROM `Collection` WHERE `Deleted` = 0');
 
@@ -33,6 +33,7 @@ function displayData(array $allItems): string
     $output = '';
     foreach($allItems as $row)
     {
+<<<<<<< HEAD
         $output .= '<div class="item"><form method="post">';
         foreach($row as $field => $value)
             if($field == 'id') {
@@ -44,6 +45,12 @@ function displayData(array $allItems): string
             }
             $output .= '<p>'. '<input type="submit" value="Delete" name="submit">' .'</p>';
             $output .= '</form></div>';
+=======
+        foreach($row as $row => $field)
+        {
+           $output .= '<p>' . $row . ' : ' . $field . '</p>';
+        }
+>>>>>>> 5e725a0259b87d515b34cce36bbdd0ff6c4c3bfd
     }
     return $output;
 }
@@ -66,6 +73,7 @@ function newItem(PDO $db, string $image, string $latin, string $common, int $hei
         'capwidth' => $width,
         'deadly' => $death]);
 }
+<<<<<<< HEAD
 
 /**
  * @param $db all the data from the database
@@ -80,3 +88,5 @@ function delete(PDO $db, $id)
 
 
 }
+=======
+>>>>>>> 5e725a0259b87d515b34cce36bbdd0ff6c4c3bfd

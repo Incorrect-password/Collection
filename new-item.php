@@ -18,11 +18,9 @@ if(isset($_POST['image']) &&
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="normalize.css" rel="stylesheet" type="text/css">
-        <link href="mushroomcollection.css" rel="stylesheet" type="text/css">
      <title>Add Item</title>
     </head>
     <body>
-        <h1>Add A New Shroom</h1>
         <form method="post">
             <div class="inputDiv">
                 <label for="image">Image URL/Location</label>
@@ -54,8 +52,6 @@ if(isset($_POST['image']) &&
                 <input type="submit" value="submit" name="submit">
             </div>
         </form>
-        <div class="anchorBox">
-            <a href="index.php" class="pagelink">Back to Collection</a>
-        </div>
+        <a href="index.php">See Collection</a>
     </body>
 </html>
