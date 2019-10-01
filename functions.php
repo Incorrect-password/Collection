@@ -6,7 +6,8 @@
  */
 function collectionDbConnection(): PDO
 {
-    $db = new PDO('mysql:host=db; dbname=Collection', 'root', 'password');
+    $db = new PDO('mysql:host=127.0.0.1; dbname=Collection', 'root', 'LxM7<{9d1AMR
+');
 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
@@ -76,5 +77,7 @@ function delete(PDO $db, $id)
     $query = $db->prepare('UPDATE `Collection` SET `Deleted`=1 WHERE `id` = :id');
 
     $query->execute([':id' => $id]);
-
 }
+
+
+
